@@ -1,13 +1,17 @@
-// nuxt.config.ts
+import vuetify from 'vuetify';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: {
     '/': { prerender: true },
   },
   css: [
-    'vuetify/styles', // Adding Vuetify CSS for styling
+    'vuetify/styles', // Vuetify styles should be imported here
   ],
   build: {
-    transpile: ['vuetify'], // Ensures Vuetify is transpiled for compatibility
+    transpile: ['vuetify'], // Ensure Vuetify is transpiled correctly
+    rollupOptions: {
+      external: ['vuetify/styles'], // Ensure Vuetify styles are externalized
+    },
   },
-})
+});
